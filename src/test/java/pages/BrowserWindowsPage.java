@@ -18,7 +18,6 @@ public class BrowserWindowsPage {
     static By newPopupButton = By.xpath("//*[@id='messageWindowButton']");
     static By newTabMessage = By.id("sampleHeading");
     static By getNewWindowHeading = By.id("sampleHeading");
-    static By getNewPopupMessage = By.xpath("/html/body");
     static String popupMessage = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
     public static void open(){

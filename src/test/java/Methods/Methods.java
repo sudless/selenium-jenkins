@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
-import org.apache.commons.lang3.ArrayUtils;
 import utilities.DriverManager;
 import java.io.IOException;
 import java.time.Duration;
@@ -64,7 +63,7 @@ public class Methods {
         actions.doubleClick(element(locator)).build().perform();
     }
 
-    public static void rightClickrightClick(By locator) {
+    public static void rightClick(By locator) {
         actions.contextClick(element(locator)).build().perform();
     }
 

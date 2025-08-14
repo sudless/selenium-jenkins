@@ -2,7 +2,6 @@ package pages;
 
 import Methods.Methods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import utilities.DriverManager;
 
 public class AutoCompletePage {

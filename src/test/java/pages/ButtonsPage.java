@@ -3,11 +3,9 @@ package pages;
 import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import utilities.DriverManager;
 
 public class ButtonsPage {
-    static Actions actions = new Actions(DriverManager.getDriver());
 
     static By doubleClickButton = By.xpath("//button[text()='Double Click Me']");
     static By singleClickButton = By.xpath("//button[text()='Click Me']");
