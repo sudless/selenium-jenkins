@@ -110,20 +110,6 @@ public class BrowserWindowsPage {
             default:
                 throw new IllegalArgumentException("Unexpected view type: " + view);
         }
-//                List<String> windowHandles = DriverManager.getDriver().getWindowHandles().stream().toList();
-//                System.out.println(windowHandles);
-//                System.out.println(windowHandles.get(1));
-//                System.out.println(DriverManager.getDriver().switchTo().window(windowHandles.get(1)).findElement(By.xpath("//body")).getText());
-
-
-
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unexpected view type: " + view);
-//
-//        }
-       // d.close();
-       // d.switchTo().window(originalWindow);
     }
     }
 

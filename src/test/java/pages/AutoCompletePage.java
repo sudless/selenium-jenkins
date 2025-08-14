@@ -45,7 +45,9 @@ public class AutoCompletePage {
             Methods.sendKeysEnter(multipleInput, "Red");
             Methods.elementPresent(purpleMultView).isDisplayed();
         }
+
     }
+
     }
 
 

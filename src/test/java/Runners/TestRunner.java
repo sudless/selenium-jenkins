@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/main/resources/features",
-        glue = "stepDefinitions",
-        tags = "@browserWindows",
+        glue = {"stepDefinitions", "hooks"},
+        tags = "@buttons",
         plugin = {"pretty", "html:target/cucumber-report.html"},
         monochrome = true
 )

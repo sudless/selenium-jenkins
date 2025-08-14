@@ -28,7 +28,7 @@ public class ButtonsPage {
                 Methods.rightClick(rightClickButton);
                 break;
             case "Click Me":
-                Methods.click(singleClickMessage);
+                Methods.click(singleClickButton);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid button type: " + clickType);
@@ -59,5 +59,5 @@ public class ButtonsPage {
             default:
                 throw new IllegalArgumentException("Unexpected message type ");
         }
-}
+    }
 }

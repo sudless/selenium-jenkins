@@ -46,5 +46,6 @@ public class CheckBoxPage {
         Assert.assertEquals(resultExpected, resultText);
     }
 
+
     }
 
