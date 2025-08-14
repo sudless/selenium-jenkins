@@ -10,7 +10,25 @@ public class CheckBoxPage {
     static By checkBoxResult = By.cssSelector("div[id='result']");
 
 
-    static String resultExpected ="You have selected :\n" + "home\n" + "desktop\n" + "notes\n" + "commands\n" + "documents\n" + "workspace\n" + "react\n" + "angular\n" + "veu\n" + "office\n" + "public\n" + "private\n" + "classified\n" + "general\n" + "downloads\n" + "wordFile\n" + "excelFile";
+    static String resultExpected = """
+            You have selected :
+            home
+            desktop
+            notes
+            commands
+            documents
+            workspace
+            react
+            angular
+            veu
+            office
+            public
+            private
+            classified
+            general
+            downloads
+            wordFile
+            excelFile""";
     public static void open(){
         DriverManager.getDriver().get("https://demoqa.com/checkbox");
     }

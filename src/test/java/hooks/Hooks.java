@@ -6,15 +6,12 @@ import utilities.DriverManager;
 
 import java.time.Duration;
 
-import static utilities.DriverManager.driver;
-
 public class Hooks {
 
     @BeforeAll
     public void setUp() {
-        DriverManager.getDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        DriverManager.getDriver().manage().window().maximize();
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
     }
 

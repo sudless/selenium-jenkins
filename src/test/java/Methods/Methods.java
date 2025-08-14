@@ -15,8 +15,8 @@ import java.util.List;
 
 public class Methods {
     public static WebDriver driver = DriverManager.getDriver();
-    Actions actions;
-    public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));;
+    static Actions actions;
+    public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     By title = By.className("main-header");
 

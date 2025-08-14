@@ -14,7 +14,7 @@ public class Buttons {
     }
 
     @When("I click {string} button")
-    public void i_click_button(String clickType) throws InterruptedException {
+    public void i_click_button(String clickType){
         ButtonsPage.clickButton(clickType);
     }
 
