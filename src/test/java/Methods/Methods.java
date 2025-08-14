@@ -5,10 +5,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.Select;
 import utilities.DriverManager;
 import java.time.Duration;
-import java.util.List;
 
 
 public class Methods {
@@ -125,9 +123,9 @@ public class Methods {
 //        actions.keyDown(elements(locator).get(i), Keys.CONTROL).perform();
 //    }
     /* ALERTS_FRAMES_ */
-    public WebDriver.TargetLocator switchTo() {
-        return driver.switchTo();
-    }
+//    public WebDriver.TargetLocator switchTo() {
+//        return driver.switchTo();
+//    }
 
 //    public Alert switchToAlert() {
 //        return switchTo().alert();
