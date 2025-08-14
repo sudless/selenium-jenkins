@@ -27,9 +27,9 @@ public class Methods {
     public static WebElement elementByClickable(By locator){
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public List<WebElement> elements(By locator){
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-    }
+//    public List<WebElement> elements(By locator){
+//        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+//    }
     public static void sendKeys(By locator, String string){
         element(locator).sendKeys(string);
     }
@@ -53,9 +53,9 @@ public class Methods {
 //        actions.click(elements(locator).get(i)).build().perform();
 //    }
 
-    public void clickActions(By locator) {
-        actions.click(element(locator)).build().perform();
-    }
+//    public void clickActions(By locator) {
+//        actions.click(element(locator)).build().perform();
+//    }
 
     public static void doubleClick(By locator) {
         actions.doubleClick(element(locator)).build().perform();
@@ -65,17 +65,17 @@ public class Methods {
         actions.contextClick(element(locator)).build().perform();
     }
 
-    public void moveToElement(By locator) {
-        actions.moveToElement(element(locator)).perform();
-    }
+//    public void moveToElement(By locator) {
+//        actions.moveToElement(element(locator)).perform();
+//    }
 //    public void moveToElements(By locator, int index) {
 //        actions.moveToElement(elements(locator).get(index)).perform();
 //    }
-
-    public void javaExecutorScrollIntoView(By locator) {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView()", element(locator));
-    }
+//
+//    public void javaExecutorScrollIntoView(By locator) {
+//        JavascriptExecutor jse = (JavascriptExecutor) driver;
+//        jse.executeScript("arguments[0].scrollIntoView()", element(locator));
+//    }
 
 //    public void javaExecutorClick(By locator) {
 //        JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -86,9 +86,9 @@ public class Methods {
 //        return getText(title);
 //    }
     /* SELECT_ */
-    public Select select(WebElement element) {
-        return new Select(element);
-    }
+//    public Select select(WebElement element) {
+//        return new Select(element);
+//    }
 
 //    public void selectByVisibleText(By locator, String text) {
 //        select(element(locator)).selectByVisibleText(text);
@@ -129,9 +129,9 @@ public class Methods {
         return driver.switchTo();
     }
 
-    public Alert switchToAlert() {
-        return switchTo().alert();
-    }
+//    public Alert switchToAlert() {
+//        return switchTo().alert();
+//    }
 
 //    public void acceptAlert() {
 //        switchToAlert().accept();
