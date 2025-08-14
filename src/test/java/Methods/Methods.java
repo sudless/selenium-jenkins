@@ -33,20 +33,20 @@ public class Methods {
     public List<WebElement> elements(By locator){
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
-    public void sendKeys(By locator, String string){
+    public static void sendKeys(By locator, String string){
         element(locator).sendKeys(string);
     }
-    public void sendKeysEnter(By locator,String string){
+    public static void sendKeysEnter(By locator, String string){
         sendKeys(locator, string);
         sendKeys(locator,""+ Keys.ENTER);
     }
-    public void click(By locator) {
+    public static void click(By locator) {
         element(locator).click();
     }
     public void clickWithIndex(By locator, int index) {
         elements(locator).get(index).click();
     }
-    public String getText(By locator) {
+    public static String getText(By locator) {
         return element(locator).getText();
     }
     public String getTexts(By locator, int i) {
@@ -60,11 +60,11 @@ public class Methods {
         actions.click(element(locator)).build().perform();
     }
 
-    public void doubleClick(By locator) {
+    public static void doubleClick(By locator) {
         actions.doubleClick(element(locator)).build().perform();
     }
 
-    public void rightClick(By locator) {
+    public static void rightClickrightClick(By locator) {
         actions.contextClick(element(locator)).build().perform();
     }
 

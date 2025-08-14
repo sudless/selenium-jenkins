@@ -3,7 +3,6 @@ package pages;
 import Methods.Methods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import utilities.DriverManager;
 
 public class AutoCompletePage {
@@ -20,25 +19,31 @@ public class AutoCompletePage {
     }
     public static void enterColors(String numOfColors, String inputField){
         if(numOfColors.equals("2") && inputField.equals("multiple colors space")){
-            Methods.elementByClickable(multipleInput).sendKeys("Red", Keys.ENTER);
-            Methods.elementByClickable(multipleInput).sendKeys("Blue", Keys.ENTER);
+            Methods.sendKeysEnter(multipleInput, "Red");
+            Methods.sendKeysEnter(multipleInput, "Blue");
         }else if(numOfColors.equals("1") && inputField.equals("single colors space")){
-            Methods.elementByClickable(singleInput).sendKeys("Red", Keys.ENTER);
+            Methods.sendKeysEnter(singleInput, "Red");
         }else if(numOfColors.equals("1") && inputField.equals("multiple colors space")){
-            Methods.elementByClickable(multipleInput).sendKeys("Red", Keys.ENTER);
+            Methods.sendKeysEnter(multipleInput, "Red");
         }
     }
     public static void viewColorResult(String numOfColors,String inputField){
         if(numOfColors.equals("2") && inputField.equals("multiple colors space")){
-            Methods.elementByClickable(multipleInput).sendKeys("Red", Keys.ENTER);
-            Methods.elementByClickable(multipleInput).sendKeys("Blue", Keys.ENTER);
+
+            Methods.sendKeysEnter(multipleInput, "Red");
+            Methods.sendKeysEnter(multipleInput, "Blue");
+
             Methods.elementPresent(blueMultView).isDisplayed();
             Methods.elementPresent(redMultView).isDisplayed();
+
         }else if(numOfColors.equals("1") && inputField.equals("single colors space")){
-            Methods.elementByClickable(singleInput).sendKeys("Red", Keys.ENTER);
+
+            Methods.sendKeysEnter(singleInput, "Red");
             Methods.elementPresent(redSingleLocator).isDisplayed();
+
         }else if(numOfColors.equals("1") && inputField.equals("multiple colors space")){
-            Methods.elementByClickable(multipleInput).sendKeys("Red", Keys.ENTER);
+
+            Methods.sendKeysEnter(multipleInput, "Red");
             Methods.elementPresent(purpleMultView).isDisplayed();
         }
     }

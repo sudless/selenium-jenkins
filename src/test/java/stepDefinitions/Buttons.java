@@ -3,12 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.DriverManager;
-import org.openqa.selenium.interactions.Actions;
 import pages.ButtonsPage;
-import java.time.Duration;
 
 
 public class Buttons {

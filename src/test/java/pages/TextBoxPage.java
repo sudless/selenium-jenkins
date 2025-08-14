@@ -18,10 +18,10 @@ public class TextBoxPage {
         DriverManager.getDriver().get("https://demoqa.com/text-box");
     }
     public static void fillForm(){
-        Methods.elementByClickable(fullName).sendKeys("testerFullName");
-        Methods.elementByClickable(email).sendKeys("testerEmail@gmail.com");
-        Methods.elementByClickable(currAdd).sendKeys("testerCurrAddress");
-        Methods.elementByClickable(permAdd).sendKeys("testerPermAddress");
+        Methods.sendKeys(fullName,"testerFullName");
+        Methods.sendKeys(email,"testerEmail@gmail.com");
+        Methods.sendKeys(currAdd,"testerCurrAddress");
+        Methods.sendKeys(permAdd,"testerPermAddress");
     }
     public static void submit(){
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
@@ -29,6 +29,6 @@ public class TextBoxPage {
     }
     public static void checkDisplayedName(String expected){
         Methods.element(nameDisplayed).isDisplayed();
-        Assert.assertEquals(expected, Methods.element(nameDisplayed).getText());
+        Assert.assertEquals(expected, Methods.getText(nameDisplayed));
     }
 }

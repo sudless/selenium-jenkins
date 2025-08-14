@@ -3,12 +3,7 @@ package pages;
 import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverManager;
-
-import java.time.Duration;
 
 public class CheckBoxPage {
     static By checkBox = By.cssSelector("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
@@ -22,13 +17,13 @@ public class CheckBoxPage {
 
     public static void clickCheckBox(){
         if(Methods.elementByClickable(checkBox).isSelected()){
-            Methods.elementByClickable(checkBox).click();
+            Methods.click(checkBox);
         }
-        Methods.elementByClickable(checkBox).click();
+        Methods.click(checkBox);
     }
 
     public static void checkResultMessage(){
-        String resultText = Methods.element(checkBoxResult).getText();
+        String resultText = Methods.getText(checkBoxResult);
         Methods.element(checkBoxResult).isDisplayed();
         Assert.assertEquals(resultExpected, resultText);
     }

@@ -9,10 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverManager;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Set;
-
-import static utilities.DriverManager.driver;
 
 public class BrowserWindowsPage {
 
@@ -23,18 +20,21 @@ public class BrowserWindowsPage {
     static By getNewWindowHeading = By.id("sampleHeading");
     static By getNewPopupMessage = By.xpath("/html/body");
     static String popupMessage = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
+
     public static void open(){
         DriverManager.getDriver().get("https://demoqa.com/browser-windows");
     }
 
     public static void clickButtons(String button){
+
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
         Methods.elementByClickable(newTabButton).isDisplayed();
         Methods.elementByClickable(newWindowButton).isDisplayed();
         Methods.elementByClickable(newPopupButton).isDisplayed();
+
         switch(button) {
             case "New Tab":
-                Methods.elementByClickable(newTabButton).click();
+                Methods.click(newTabButton);
                 break;
             case "New Window":
                 js.executeScript("arguments[0].click()", Methods.elementByClickable(newWindowButton));
@@ -44,6 +44,7 @@ public class BrowserWindowsPage {
                 break;
         }
     }
+
     public static void viewResult(String view) {
         var d = DriverManager.getDriver();
         WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(5));
@@ -61,15 +62,16 @@ public class BrowserWindowsPage {
                         ((JavascriptExecutor) w).executeScript("return document.readyState")));
 
                 Methods.element(newTabMessage).isDisplayed();
-                Assert.assertEquals(Methods.element(newTabMessage).getText(), "This is a sample page");
+                Assert.assertEquals(Methods.getText(newTabMessage), "This is a sample page");
                 DriverManager.getDriver().switchTo().window(originalWindow);
+
                 break;
             case "new window":
                 wait.until(w -> "complete".equals(
                         ((JavascriptExecutor) w).executeScript("return document.readyState")));
                 DriverManager.getDriver().switchTo().window(DriverManager.getDriver().getWindowHandle());
                 Methods.element(getNewWindowHeading).isDisplayed();
-                Assert.assertEquals("This is a sample page", Methods.element(getNewWindowHeading).getText());
+                Assert.assertEquals("This is a sample page", Methods.getText(getNewWindowHeading));
                 break;
             case "new window message":
 

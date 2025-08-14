@@ -12,11 +12,11 @@ public class AutoComplete {
     }
 
     @When("I enter {string} in {string}")
-    public void i_enter_colors_infield(String numOfColors, String inputField) throws InterruptedException {
+    public void i_enter_colors_infield(String numOfColors, String inputField){
         AutoCompletePage.enterColors(numOfColors, inputField);
     }
     @Then("I view the chosen {string} in {string}")
-    public void i_view_result(String numOfColors,String inputField) throws InterruptedException {
+    public void i_view_result(String numOfColors,String inputField){
         AutoCompletePage.viewColorResult(numOfColors, inputField);
     }
 

@@ -4,9 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.BrowserWindowsPage;
-import utilities.DriverManager;
-
-import java.util.Set;
 
 public class BrowserWindows {
 
