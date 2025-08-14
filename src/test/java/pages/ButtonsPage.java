@@ -36,7 +36,7 @@ public class ButtonsPage {
     }
 
     public static void getMessage(String messageType) {
-        String actualMessage = "";
+        String actualMessage;
         switch (messageType){
             case "You have done a double click":
                 Methods.doubleClick(doubleClickButton);
