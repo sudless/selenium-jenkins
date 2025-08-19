@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverFactory;
+import utilities.WebdriverExtras;
 
 import java.time.Duration;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class BrowserWindowsPage {
     static String popupMessage = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
     public static void open(){
-        DriverFactory.getDriver().get("https://demoqa.com/browser-windows");
+        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
     }
 
     public static void clickButtons(String button){

@@ -4,6 +4,7 @@ import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import utilities.DriverFactory;
+import utilities.WebdriverExtras;
 
 public class ButtonsPage {
 
@@ -16,7 +17,7 @@ public class ButtonsPage {
 
 
     public static void open() {
-        DriverFactory.getDriver().get("https://demoqa.com/buttons");
+        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
     }
 
     public static void clickButton(String clickType) {

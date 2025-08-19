@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/main/resources/features",
         glue = {"stepDefinitions", "hooks"},
-//        tags = "@checkBox",
+        tags = "@autoComplete",
         plugin = {"pretty",
                   "json:target/cucumber-report/cucumber.json",
                   "junit:target/cucumber-report/cucumber.xml"

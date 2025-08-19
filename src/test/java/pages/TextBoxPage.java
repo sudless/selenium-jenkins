@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import utilities.DriverFactory;
+import utilities.WebdriverExtras;
 
 public class TextBoxPage {
     static By fullName = By.xpath("(//*[@autocomplete])[1]");
@@ -15,7 +16,7 @@ public class TextBoxPage {
     static By nameDisplayed = By.xpath("//p[@id='name']");
 
     public static void open(){
-        DriverFactory.getDriver().get("https://demoqa.com/text-box");
+        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
     }
     public static void fillForm(){
         Methods.sendKeys(fullName,"testerFullName");

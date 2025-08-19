@@ -4,6 +4,7 @@ import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import utilities.DriverFactory;
+import utilities.WebdriverExtras;
 
 public class CheckBoxPage {
     static By checkBox = By.cssSelector("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
@@ -30,7 +31,7 @@ public class CheckBoxPage {
             wordFile
             excelFile""";
     public static void open(){
-        DriverFactory.getDriver().get("https://demoqa.com/checkbox");
+        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
     }
 
     public static void clickCheckBox(){
