@@ -29,7 +29,7 @@ pipeline{
             }
         }
     }
- }
+
 
  post {
     always {
@@ -37,5 +37,4 @@ pipeline{
         archiveArtifacts artifacts: 'target/**/*', fingerprint=true
     }
   }
-}
 }
