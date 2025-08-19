@@ -6,6 +6,8 @@ pipeline{
         jdk 'jdk'
     }
 
+    options { timeout(time: 30, unit: 'MINUTES') }
+
     stages {
         stage('Checkout') {
             steps {
@@ -13,23 +15,25 @@ pipeline{
             }
         }
 
-        stage('Build & Test - Chrome') {
-            steps {
-                sh "mvn clean test -Dbrowser=chrome -Dheadless=false"
+    stage('Test (matrix)') {
+        parallel {
+            stage ('Chrome') {
+                steps {
+                    sh 'mvn -B clean test -Dbrowser=chrome -Dheadless=true'
+                }
             }
-        }
-
-        stage('Build & Test - Firefox') {
-            steps {
-                sh "mvn clean test -Dbrowser=firefox -Dheadless=false"
+            stage('Firefox') {
+                steps {
+                    sh 'mvn -B clean test -Dbrowser=friefox -Dheadless=true'
+                }
             }
         }
     }
+ }
 
-    post {
-        always {
-            junit '**/target/cucumber-reports/*.xml'
-            archiveArtifacts artifacts: 'target/cucumber-reports/**', fingerprint: true
-        }
+ post {
+    always {
+        junit '**/target/surefire-reports/*.xml, **/target/cucumber-reports/*.xml'
+        archiveArtifacts artifacts: 'target/**/*', fingerprint=true
     }
-}
+ }
