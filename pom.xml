@@ -7,13 +7,116 @@
     <groupId>cucumber3</groupId>
     <artifactId>cucumber3</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-plugin</artifactId>
+                <version>7.26.0</version>
+                <executions>
+                    <execution>
+                        <id>execute</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <glue>stepDefinitions</glue>
+                            <featuresDirectory>src/main/resources/features</featuresDirectory>
+                            <plugin>
+                                <value>json:target/cucumber.json</value>
+                            </plugin>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.temyers</groupId>
+                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>generateRunners</id>
+                        <phase>generate-test-sources</phase>
+                        <goals><goal>generateRunners</goal></goals>
+                        <configuration>
 
+                            <featuresDirectory>src/main/resources/features</featuresDirectory>
+                            <glue>
+                                <package>stepDefinitions</package>
+                                <package>hooks</package>
+                            </glue>
+                            <outputDirectory>target/generated-test-sources</outputDirectory>
+                            <parallelScheme>SCENARIO</parallelScheme> <!-- veya FEATURE -->
+
+                            <cucumberOutputDir>target/cucumber-reports</cucumberOutputDir>
+
+
+
+                            <useTestNG>false</useTestNG> <!-- JUnit kullanıyorsan false -->
+
+
+                            <cucumberOptions>
+                                --plugin pretty
+                                --monochrome
+                            </cucumberOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <includes>
+                        <include>**/Parallel*IT.java</include> <!-- plugin’in ürettiği pattern -->
+                        <include>**/*Runner*.java</include>
+                    </includes>
+                    <parallel>classes</parallel>
+                    <threadCount>4</threadCount>
+                    <systemPropertyVariables>
+                        <browser>${browser}</browser>
+                        <headless>${headless}</headless>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>add-test-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-test-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
     <properties>
+        <browser>firefox</browser>
+        <headless>false</headless>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.8.0</version>
+        </dependency>
         <!-- Cucumber dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -21,6 +124,7 @@
             <version>7.23.0</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>

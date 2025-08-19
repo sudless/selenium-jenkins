@@ -5,13 +5,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.DriverManager;
+import utilities.DriverFactory;
 import java.time.Duration;
 
 
 public class Methods {
-    public static WebDriver driver = DriverManager.getDriver();
-    static Actions actions = new Actions(DriverManager.getDriver());
+    public static WebDriver driver = DriverFactory.getDriver();
+    static Actions actions = new Actions(DriverFactory.getDriver());
     public static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     //By title = By.className("main-header");

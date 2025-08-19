@@ -3,7 +3,7 @@ package pages;
 import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import utilities.DriverManager;
+import utilities.DriverFactory;
 
 public class ButtonsPage {
 
@@ -16,7 +16,7 @@ public class ButtonsPage {
 
 
     public static void open() {
-        DriverManager.getDriver().get("https://demoqa.com/buttons");
+        DriverFactory.getDriver().get("https://demoqa.com/buttons");
     }
 
     public static void clickButton(String clickType) {

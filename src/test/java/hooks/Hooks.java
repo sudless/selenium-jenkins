@@ -1,8 +1,7 @@
 package hooks;
 
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.AfterAll;
-import utilities.DriverManager;
+import io.cucumber.java.*;
+import utilities.DriverFactory;
 
 import java.time.Duration;
 
@@ -10,14 +9,14 @@ public class Hooks {
 
     @BeforeAll
     public static void setUp() {
-        DriverManager.getDriver().manage().window().maximize();
-        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        DriverFactory.getDriver().manage().window().maximize();
+        DriverFactory.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
     }
 
     @AfterAll
     public static void tearDown() {
-        DriverManager.quit();
+        DriverFactory.quitDriver();
 
     }
 }

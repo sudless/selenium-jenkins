@@ -3,7 +3,7 @@ package pages;
 import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import utilities.DriverManager;
+import utilities.DriverFactory;
 
 public class CheckBoxPage {
     static By checkBox = By.cssSelector("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
@@ -30,7 +30,7 @@ public class CheckBoxPage {
             wordFile
             excelFile""";
     public static void open(){
-        DriverManager.getDriver().get("https://demoqa.com/checkbox");
+        DriverFactory.getDriver().get("https://demoqa.com/checkbox");
     }
 
     public static void clickCheckBox(){

@@ -2,7 +2,7 @@ package pages;
 
 import Methods.Methods;
 import org.openqa.selenium.By;
-import utilities.DriverManager;
+import utilities.DriverFactory;
 
 public class AutoCompletePage {
 
@@ -14,7 +14,7 @@ public class AutoCompletePage {
     static By purpleMultView = By.xpath("//div[@class='css-12jo7m5 auto-complete__multi-value__label']");
 
     public static void open(){
-        DriverManager.getDriver().get("https://demoqa.com/auto-complete");
+        DriverFactory.getDriver().get("https://demoqa.com/auto-complete");
     }
     public static void enterColors(String numOfColors, String inputField){
         if(numOfColors.equals("2") && inputField.equals("multiple colors space")){

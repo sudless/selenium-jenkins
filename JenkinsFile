@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+
+    tools {
+        maven 'mvn'
+        jdk 'jdk'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build & Test - Chrome') {
+            steps {
+                sh "mvn clean test -Dbrowser=chrome -Dheadless=false"
+            }
+        }
+
+        stage('Build & Test - Firefox') {
+            steps {
+                sh "mvn clean test -Dbrowser=firefox -Dheadless=false"
+            }
+        }
+    }
+
+    post {
+        always {
+            junit '**/target/cucumber-reports/*.xml'
+            archiveArtifacts artifacts: 'target/cucumber-reports/**', fingerprint: true
+        }
+    }
+}
