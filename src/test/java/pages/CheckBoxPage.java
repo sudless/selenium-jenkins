@@ -3,7 +3,6 @@ package pages;
 import Methods.Methods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import utilities.DriverFactory;
 import utilities.WebdriverExtras;
 
 public class CheckBoxPage {
@@ -31,7 +30,7 @@ public class CheckBoxPage {
             wordFile
             excelFile""";
     public static void open(){
-        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
+        WebdriverExtras.safeGet("https://demoqa.com/checkbox");
     }
 
     public static void clickCheckBox(){

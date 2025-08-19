@@ -22,7 +22,7 @@ public class BrowserWindowsPage {
     static String popupMessage = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
     public static void open(){
-        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
+        WebdriverExtras.safeGet("https://demoqa.com/browser-windows");
     }
 
     public static void clickButtons(String button){

@@ -16,7 +16,7 @@ public class TextBoxPage {
     static By nameDisplayed = By.xpath("//p[@id='name']");
 
     public static void open(){
-        WebdriverExtras.safeGet("https://demoqa.com/auto-complete");
+        WebdriverExtras.safeGet("https://demoqa.com/text-box");
     }
     public static void fillForm(){
         Methods.sendKeys(fullName,"testerFullName");

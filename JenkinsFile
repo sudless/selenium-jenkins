@@ -35,8 +35,8 @@ pipeline {
  post {
     always {
           // Publish BOTH: Surefire (if any) and Cucumber JUnit XML
-        junit testResults: '**/target/surefire-reports/*.xml, target/cucumber-report/cucumber.xml',
-              allowEmptyResults: true
+        junit testResults: '**/target/surefire-reports/*.xml, target/cucumber-report/cucumber.xml'
+
 
 archiveArtifacts artifacts: 'target/cucumber-report/**/*', allowEmptyArchive: true    }
   }
