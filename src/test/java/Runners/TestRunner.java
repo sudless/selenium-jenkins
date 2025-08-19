@@ -10,7 +10,10 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/features",
         glue = {"stepDefinitions", "hooks"},
         tags = "@checkBox",
-        plugin = {"pretty", "html:target/cucumber-report.html"},
+        plugin = {"pretty",
+                  "json:target/cucumber-report/cucumber.json",
+                  "junit:target/cucumber-report/cucumber.xml"
+        },
         monochrome = true
 )
 
