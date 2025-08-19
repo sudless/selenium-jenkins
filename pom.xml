@@ -9,27 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
-            <plugin>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-plugin</artifactId>
-                <version>7.26.0</version>
-                <executions>
-                    <execution>
-                        <id>execute</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <glue>stepDefinitions</glue>
-                            <featuresDirectory>src/main/resources/features</featuresDirectory>
-                            <plugin>
-                                <value>json:target/cucumber.json</value>
-                            </plugin>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!-- OPTIONAL: generate parallel runners -->
             <plugin>
                 <groupId>com.github.temyers</groupId>
                 <artifactId>cucumber-jvm-parallel-plugin</artifactId>
@@ -51,7 +31,7 @@
                             <cucumberOutputDir>target/cucumber-reports</cucumberOutputDir>
 
                             <useTestNG>false</useTestNG> <!-- JUnit kullanıyorsan false -->
-
+                            <!-- pass Cucumber CLI options here -->
                             <cucumberOptions>
                                 --plugin pretty
                                 --monochrome
@@ -60,13 +40,14 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <!-- test runner -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
                     <includes>
+                        <!-- Ensure generated runners are picked up -->
                         <include>**/Parallel*IT.java</include> <!-- plugin’in ürettiği pattern -->
                         <include>**/*Runner*.java</include>
                     </includes>
