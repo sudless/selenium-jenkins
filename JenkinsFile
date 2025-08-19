@@ -35,7 +35,7 @@ pipeline {
  post {
     always {
         junit '**/target/surefire-reports/*.xml, **/target/cucumber-reports/*.xml'
-        archiveArtifacts artifacts: 'target/**/*', fingerprint=true
+        archiveArtifacts artifacts: 'target/**/*', fingerprint:true
     }
   }
 }
