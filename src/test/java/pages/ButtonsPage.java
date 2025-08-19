@@ -64,7 +64,7 @@ public class ButtonsPage {
                 Assert.assertEquals(messageType, actualMessage);
                 break;
             case "You have done a dynamic click":
-                js.executeScript("arguments[0].click();", Methods.element(singleClickMessage));
+                js.executeScript("arguments[0].click();", Methods.element(singleClickButton));
                 Methods.click(singleClickButton);
                 Methods.element(singleClickMessage).isDisplayed();
                 actualMessage = Methods.getText(singleClickMessage);
