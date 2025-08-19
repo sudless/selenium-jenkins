@@ -40,7 +40,6 @@
                         <phase>generate-test-sources</phase>
                         <goals><goal>generateRunners</goal></goals>
                         <configuration>
-
                             <featuresDirectory>src/main/resources/features</featuresDirectory>
                             <glue>
                                 <package>stepDefinitions</package>
@@ -51,10 +50,7 @@
 
                             <cucumberOutputDir>target/cucumber-reports</cucumberOutputDir>
 
-
-
                             <useTestNG>false</useTestNG> <!-- JUnit kullanıyorsan false -->
-
 
                             <cucumberOptions>
                                 --plugin pretty
