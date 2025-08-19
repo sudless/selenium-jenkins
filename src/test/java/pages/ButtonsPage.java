@@ -58,14 +58,15 @@ public class ButtonsPage {
                 js.executeScript(
                         "var e=new MouseEvent('contextmenu',{bubbles:true,cancelable:true,view:window,button:2});" +
                                 "arguments[0].dispatchEvent(e);",
-                        Methods.element(rightClickButton));                //Methods.rightClick(rightClickButton);
+                        Methods.element(rightClickButton));
+                //Methods.rightClick(rightClickButton);
                 Methods.element(rightClickMessage).isDisplayed();
                 actualMessage = Methods.getText(rightClickMessage);
                 Assert.assertEquals(messageType, actualMessage);
                 break;
             case "You have done a dynamic click":
                 js.executeScript("arguments[0].click();", Methods.element(singleClickButton));
-                Methods.click(singleClickButton);
+                //Methods.click(singleClickButton);
                 Methods.element(singleClickMessage).isDisplayed();
                 actualMessage = Methods.getText(singleClickMessage);
                 Assert.assertEquals(messageType, actualMessage);
