@@ -10,35 +10,41 @@ pipeline {
     options { timeout(time: 30, unit: 'MINUTES') }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+        stage('Checkout'){
+        steps { checkout scm }
+       }
 
-    stage('Test (matrix)') {
-        parallel {
-            stage ('Chrome') {
-                steps {
-                    sh 'mvn -B test -Dbrowser=chrome -Dheadless=true'
+    stage ('Test (matrix)') {
+        matrix{
+            axes{
+                axis{
+                    name 'BROWSER'
+                    values 'chrome', 'firefox'
                 }
             }
-            stage('Firefox') {
-                steps {
-                    sh 'mvn -B test -Dbrowser=firefox -Dheadless=true'
-                }
-            }
+    stages {
+        stage('Run tests'){
+        stage {
+        // Add a short PATH if you need Homebrew git/browsers:
+        // withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"]){
+        sh """
+            mvn -B test \
+            -Dbrowser=${BROWSER} \
+            -Dheadless=true \
+            -Dsurefire.reportNameSuffix=-${BROWSER}
+           """
+         // }
         }
-     }
-  }
-
-
- post {
-    always {
-          // Publish BOTH: Surefire (if any) and Cucumber JUnit XML
-        junit testResults: '**/target/surefire-reports/*.xml, target/cucumber-report/cucumber.xml'
-
-
-archiveArtifacts artifacts: 'target/cucumber-report/**/*', allowEmptyArchive: true    }
+      }
+    }
   }
 }
+    post{
+        always{
+        //Junit XMLs from surefire
+        junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
+        //Cucumber JSON/HTML if you output them
+        archiveArtifacts artifacts: 'target/cucumber-reports/**', allowEmptyArchive:true
+       }
+    }
+ }
