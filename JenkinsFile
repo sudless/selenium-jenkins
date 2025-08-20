@@ -1,51 +1,57 @@
 pipeline {
-    agent any
+  agent any
 
-    tools {
-        maven 'mvn'
-        jdk 'jdk'
-        git 'default'
+  tools {
+    maven 'mvn'
+    jdk   'jdk'
+    git   'default'
+  }
+
+  options {
+    timeout(time: 30, unit: 'MINUTES')
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
     }
 
-    options { timeout(time: 30, unit: 'MINUTES') }
+    stage('Test (matrix)') {
+      matrix {
+        axes {
+          axis {
+            name 'BROWSER'
+            values 'chrome', 'firefox'
+          }
+        }
 
-    stages {
-        stage('Checkout'){
-        steps { checkout scm }
-       }
-
-    stage ('Test (matrix)') {
-        matrix{
-            axes{
-                axis{
-                    name 'BROWSER'
-                    values 'chrome', 'firefox'
-                }
+        stages {
+          stage('Run tests') {
+            steps {
+              // If you need Homebrew git/browsers in PATH, uncomment and wrap sh with withEnv
+              // withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"]) {
+              sh """
+                mvn -B test \
+                  -Dbrowser=${BROWSER} \
+                  -Dheadless=true \
+                  -Dsurefire.reportNameSuffix=-${BROWSER}
+              """
+              // }
             }
-    stages {
-        stage('Run tests'){
-        stage {
-        // Add a short PATH if you need Homebrew git/browsers:
-        // withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"]){
-        sh """
-            mvn -B test \
-            -Dbrowser=${BROWSER} \
-            -Dheadless=true \
-            -Dsurefire.reportNameSuffix=-${BROWSER}
-           """
-         // }
+          }
         }
       }
     }
   }
-}
-    post{
-        always{
-        //Junit XMLs from surefire
-        junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
-        //Cucumber JSON/HTML if you output them
-        archiveArtifacts artifacts: 'target/cucumber-reports/**', allowEmptyArchive:true
-       }
+
+  post {
+    always {
+      // JUnit XMLs from surefire
+      junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
+      // Cucumber JSON/HTML if you output them
+      archiveArtifacts artifacts: 'target/cucumber-reports/**', allowEmptyArchive: true
     }
- }
- }
+  }
+}
